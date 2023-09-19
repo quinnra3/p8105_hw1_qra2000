@@ -4,31 +4,77 @@ output: github_document
 date: "2023-09-18"
 ---
 
-Load the moderndive library, and load the `early_january_weather` dataset.
+## Problem 1
+
+Load the `moderndive` library and the `early_january_weather` dataset.
 
 ```{r}
 library(moderndive)
+library(tidyverse)
+```
 
+```{r}
 data("early_january_weather")
 ```
+
 
 Next, describe the `early_january_weather` dataset using the following variables:
 * the variables in this dataset, including names / values of important variables
 * the size of the dataset (using nrow and ncol)
 * the mean temperature
 
+Size of the dataset (using nrow and ncol):
 ```{r}
 early_january_weather
 
 nrow(early_january_weather)
 
 ncol(early_january_weather)
-
-
-
 ```
 
-The `early_january_weather` dataset is a 358 row x 15 row tibble dataset. 
+The mean temperature:
+```{r}
+temp <- early_january_weather$temp
+
+mean(temp)
+```
+
+The variables in this dataset, including names/values of important variables:
+
+```{r}
+class(early_january_weather)
+
+str(early_january_weather)
+
+ls(early_january_weather)
+```
+
+The `early_january_weather` dataset shows the characteristics of weather patterns for the Newark Liberty International Airport (EWK) in early January 2013. The `early_january_weather` dataset is a 358 row x 15 row tibble dataset. The mean temperature of the dataset is 39.58212. The variables in this dataset are: origin, year, month, day, hour, temp, dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, visib, and time_hour. Note, the origin variable type is a character; year, month, day, and hour are integers. Temp, dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, and visib are numerical values. Time_hour is a date/time format.
+
+
+
+## Problem 2
+
+First, create a data frame comprised of:
+
+* a random sample of size 10 from a standard Normal distribution
+* a logical vector indicating whether elements of the sample are greater than 0
+* a character vector of length 10
+* a factor vector of length 10, with 3 different factor “levels”
+
+plot_df = 
+  tibble(
+    x = rnorm(10),
+    y = 1 + 2 * x + rnorm(1000)
+  )
+
+
+
+
+
+
+
+
 
 
 

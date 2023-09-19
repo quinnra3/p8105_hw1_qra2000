@@ -6,7 +6,7 @@ date: "2023-09-18"
 
 ## Problem 1
 
-Load the `moderndive` library and the `early_january_weather` dataset.
+The chunk below loads the necessary libraries: `moderndive` library, the `early_january_weather` dataset, and the `tidyverse` library. 
 
 ```{r}
 library(moderndive)
@@ -18,10 +18,14 @@ data("early_january_weather")
 ```
 
 
-Next, describe the `early_january_weather` dataset using the following variables:
-* the variables in this dataset, including names / values of important variables
-* the size of the dataset (using nrow and ncol)
-* the mean temperature
+The next chunk describes the `early_january_weather` dataset using the following variables:
+
+*   the size of the dataset (using nrow and ncol)
+
+*   the mean temperature
+
+*   the variables in this dataset, including names / values of important variables
+
 
 Size of the dataset (using nrow and ncol):
 ```{r}
@@ -55,18 +59,28 @@ The `early_january_weather` dataset shows the characteristics of weather pattern
 
 ## Problem 2
 
-First, create a data frame comprised of:
+The chunk below creates a dataframe comprised of a random sample of size 10 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10, with 3 different factor “levels”.
 
-* a random sample of size 10 from a standard Normal distribution
-* a logical vector indicating whether elements of the sample are greater than 0
-* a character vector of length 10
-* a factor vector of length 10, with 3 different factor “levels”
-
-plot_df = 
+```{r}
+hw1_df = 
   tibble(
-    x = rnorm(10),
-    y = 1 + 2 * x + rnorm(1000)
-  )
+    norm_samp = rnorm(10),
+    norm_samp_pos = norm_samp > 0)
+    character(length = 10)
+    factor(x=character(10), levels = 3)
+)
+```
+
+The mean of the sample is `r mean(pull(hw1_df, norm_samp))`.
+
+
+
+
+
+
+
+
+
 
 
 

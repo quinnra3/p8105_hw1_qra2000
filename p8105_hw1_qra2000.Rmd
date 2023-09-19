@@ -1,0 +1,34 @@
+---
+title: "p8105_hw1_qra2000"
+output: github_document
+date: "2023-09-18"
+---
+
+Load the moderndive library, and load the `early_january_weather` dataset.
+
+```{r}
+library(moderndive)
+
+data("early_january_weather")
+```
+
+Next, describe the `early_january_weather` dataset using the following variables:
+* the variables in this dataset, including names / values of important variables
+* the size of the dataset (using nrow and ncol)
+* the mean temperature
+
+```{r}
+early_january_weather
+
+nrow(early_january_weather)
+
+ncol(early_january_weather)
+
+
+
+```
+
+The `early_january_weather` dataset is a 358 row x 15 row tibble dataset. 
+
+
+

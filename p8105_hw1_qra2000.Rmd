@@ -75,36 +75,36 @@ The code chunk below creates a dataframe comprised of a random sample of size 10
 ```{r}
 problem2_df = 
   tibble(
-    samp = rnorm(10),
-    samp_gt_0 = samp > 0)
-    char_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+    sample = rnorm(10),
+    sample_gt_0 = sample > 0)
+    character_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
     factor_vec = factor (c("low", "low", "low", "mod", "mod", "mod", "mod", "high", "high", "high"))
 ```
 
 The code chunk below shows the mean of each variable in `problem2_df`. Variables "samp" and "samp_gt_0" are numeric, and are able to print a result. In comparison, "char_vec" and "factor_vec" are string variables, and therefore are not able to print a result. 
 
 ```{r}
-mean(problem2_df[["samp"]]) 
-mean(problem2_df[["samp_gt_0"]]) 
-mean(problem2_df[["char_vec"]]) 
+mean(problem2_df[["sample"]]) 
+mean(problem2_df[["sample_gt_0"]]) 
+mean(problem2_df[["character_vec"]]) 
 mean(problem2_df[["factor_vec"]]) 
 ```
 
 The mean of the sample:
 
 ```{r}
-mean(pull(problem2_df, samp))
+mean(pull(problem2_df, sample))
 ```
 
 The code chunk below applies the as.numeric function to the logical, character, and factor variables. What happens, and why? Does this help explain what happens when you try to take the mean?
 
 ```{r, results='hide'}
 
-a = as.numeric(problem2_df[["samp"]])
+a = as.numeric(problem2_df[["sample"]])
 
 a
 
-y = as.numeric(problem2_df[["char_vec"]])
+y = as.numeric(problem2_df[["character_vec"]])
 
 y
 

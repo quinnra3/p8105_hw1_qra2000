@@ -17,7 +17,6 @@ library(tidyverse)
 data("early_january_weather")
 ```
 
-
 The next chunk describes the `early_january_weather` dataset using the following variables:
 
 *   the size of the dataset (using nrow and ncol)
@@ -69,8 +68,6 @@ problem1_df =
 ggplot(problem1_df, aes(x = x, y = y, color = color,)) + geom_point()
 ```
 
-Describe the patterns that are apparent in the scatterplot:
-
 The scatterplot of temp (y) vs time_hour (x) indicates a positive association between temperature (y) and time_hour (x) for weather in early January 2013 around Newark Liberty International Airport (EWK). Humidity is also indicated in this scatterplot, as light blue indicates higher humidity and dark blue indicates lower humidity. In early January, humidity starts at dark blue at lower humidity levels. As the time by hour increases throughout the rest of January, the humidity increases to light blue as the temperature increases as well. 
 
 The next chunk exports the scatterplot to my project directory using ggsave:
@@ -93,6 +90,15 @@ problem2_df =
     factor_vec = factor (c("low", "low", "low", "mod", "mod", "mod", "mod", "high", "high", "high"))
     
 problem2_df
+```
+
+The chunk below shows the mean of each variable in `problem2_df`. Variables "samp" and "samp_gt_0" are numeric, and are able to print a result. In comparison, "char_vec" and "factor_vec" are string variables, and therefore are not able to print a result. 
+
+```{r}
+mean(problem2_df[["samp"]]) 
+mean(problem2_df[["samp_gt_0"]]) 
+mean(problem2_df[["char_vec"]]) 
+mean(problem2_df[["factor_vec"]]) 
 ```
 
 The mean of the sample:

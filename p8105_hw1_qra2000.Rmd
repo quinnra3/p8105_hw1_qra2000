@@ -56,22 +56,50 @@ ls(early_january_weather)
 The `early_january_weather` dataset shows the characteristics of weather patterns for the Newark Liberty International Airport (EWK) in early January 2013. The `early_january_weather` dataset is a 358 row x 15 row tibble dataset. The mean temperature of the dataset is 39.58212. The variables in this dataset are: origin, year, month, day, hour, temp, dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, visib, and time_hour. Note, the origin variable type is a character; year, month, day, and hour are integers. Temp, dewp, humid, wind_dir, wind_speed, wind_gust, precip, pressure, and visib are numerical values. Time_hour is a date/time format.
 
 
+The next chunk makes a scatterplot of temp (y) vs time_hour (x):
+
+```{r}
+problem1_df = 
+  tibble(
+    x = early_january_weather$time_hour,
+    y = early_january_weather$temp,
+    color = early_january_weather$humid,
+)
+
+ggplot(problem1_df, aes(x = x, y = y, color = color,)) + geom_point()
+```
+
+Describe the patterns that are apparent in the scatterplot:
+
+The scatterplot of temp (y) vs time_hour (x) indicates a positive association between temperature (y) and time_hour (x) for weather in early January 2013 around Newark Liberty International Airport (EWK). Humidity is also indicated in this scatterplot, as light blue indicates higher humidity and dark blue indicates lower humidity. In early January, humidity starts at dark blue at lower humidity levels. As the time by hour increases throughout the rest of January, the humidity increases to light blue as the temperature increases as well. 
+
+The next chunk exports the scatterplot to my project directory using ggsave:
+
+```{r}
+ggsave("hw1_scatter_plot.png", height = 4, width = 6)
+```
+
 
 ## Problem 2
 
 The chunk below creates a dataframe comprised of a random sample of size 10 from a standard Normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10, with 3 different factor “levels”.
 
 ```{r}
-hw1_df = 
+problem2_df = 
   tibble(
-    norm_samp = rnorm(10),
-    norm_samp_pos = norm_samp > 0)
-    character(length = 10)
-    factor(x=character(10), levels = 3)
-)
+    samp = rnorm(10),
+    samp_gt_0 = samp > 0)
+    char_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
+    factor_vec = factor (c("low", "low", "low", "mod", "mod", "mod", "mod", "high", "high", "high"))
+    
+problem2_df
 ```
 
-The mean of the sample is `r mean(pull(hw1_df, norm_samp))`.
+The mean of the sample:
+
+```{r}
+mean(pull(problem2_df, samp))
+```
 
 
 

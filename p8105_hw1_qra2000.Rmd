@@ -25,7 +25,6 @@ The next code chunk describes the `early_january_weather` dataset using the foll
 
 *   the variables in this dataset, including names / values of important variables
 
-
 Size of the dataset (using nrow and ncol):
 ```{r}
 early_january_weather
@@ -52,14 +51,13 @@ ls(early_january_weather)
 
 The `early_january_weather` dataset shows the characteristics of weather patterns for the Newark Liberty International Airport (EWK) in early January 2013. The `early_january_weather` dataset is a 358 row x 15 row tibble dataset. The mean temperature of the dataset is 39.58212. The variables in this dataset are: `origin`, `year`, `month`, `day`, `hour`, `temp`, `dewp`, `humid`, `wind_dir`, `wind_speed`, `wind_gust`, `precip`, `pressure`, `visib`, and `time_hour`. Note, the `origin` variable type is a character; `year`, `month`, `day`, and `hour` are integers. `Temp`, `dewp`, `humid`, `wind_dir`, `wind_speed`, `wind_gust`, `precip`, `pressure`, and `visib` are numerical values. `time_hour` is a date/time format.
 
-
 The next code chunk makes a scatterplot of `temp` (y) vs `time_hour` (x), with color points using the `humid` variable:
 
 ```{r}
 ggplot(early_january_weather, aes(x = time_hour, y = temp, color = humid)) + geom_point()
 ```
 
-The scatterplot of `temp` (y) vs `time_hour` (x) indicates a positive association between temperature and time by the hour for weather in early January 2013 around Newark Liberty International Airport (EWK). `Humidity is also indicated in this scatterplot, as light blue indicates higher humidity and dark blue indicates lower humidity. In early January, humidity starts at dark blue at lower humidity levels. As the time by hour increases throughout the rest of January, the humidity increases to light blue as the temperature increases as well.
+The scatterplot of `temp` (y) vs `time_hour` (x) indicates a positive association between temperature and humidity for weather over January 2013 around Newark Liberty International Airport (EWK). In this scatterplot, light blue indicates higher humidity and dark blue indicates lower humidity. In early January, humidity starts at dark blue at lower humidity levels. As the `time by hour` progresses throughout the month of January, the humidity increases as well as the temperature.
 
 The next code chunk exports the scatterplot to my project directory using ggsave:
 
@@ -67,26 +65,29 @@ The next code chunk exports the scatterplot to my project directory using ggsave
 ggsave("hw1_scatter_plot.png", height = 4, width = 6)
 ```
 
-
 ## Problem 2
 
 The code chunk below creates a dataframe comprised of a random sample of size 10 from a standard normal distribution, a logical vector indicating whether elements of the sample are greater than 0, a character vector of length 10, and a factor vector of length 10, with 3 different factor “levels”.
 
 ```{r}
 problem2_df = 
-  tibble(
-    sample = rnorm(10),
-    sample_gt_0 = sample > 0)
-    character_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j")
-    factor_vec = factor (c("low", "low", "low", "mod", "mod", "mod", "mod", "high", "high", "high"))
+tibble(
+  sample = rnorm(10),
+  sample_gt_0 = sample > 0,
+  character_vec = c("a", "b", "c", "d", "e", "f", "g", "h", "i", "j"),
+  factor_vec = factor(c("low", "low", "low", "med", "med", "med", "med", "high", "high", "high"))
+)
 ```
 
-The code chunk below shows the mean of each variable in `problem2_df`. Variables "samp" and "samp_gt_0" are numeric, and are able to print a result. In comparison, "char_vec" and "factor_vec" are string variables, and therefore are not able to print a result. 
+The code chunk below shows the mean of each variable in `problem2_df`. The variable `sample` is able to print a result because it is numeric. In comparison, `sample_gt_0`,  `character_vec` and `factor_vec` are string variables, and therefore are not able to print a result for the mean. 
 
 ```{r}
-mean(problem2_df[["sample"]]) 
-mean(problem2_df[["sample_gt_0"]]) 
-mean(problem2_df[["character_vec"]]) 
+mean(problem2_df[["sample"]])
+
+mean(problem2_df[["sample_gt_0"]])
+
+mean(problem2_df[["character_vec"]])
+
 mean(problem2_df[["factor_vec"]]) 
 ```
 
@@ -99,21 +100,22 @@ mean(pull(problem2_df, sample))
 The code chunk below applies the as.numeric function to the logical, character, and factor variables. What happens, and why? Does this help explain what happens when you try to take the mean?
 
 ```{r, results='hide'}
+logical_num = as.numeric(problem2_df[["sample_gt_0"]])
 
-a = as.numeric(problem2_df[["sample"]])
+character_vec_num = as.numeric(problem2_df[["character_vec"]])
 
-a
-
-y = as.numeric(problem2_df[["character_vec"]])
-
-y
-
-z = as.numeric(factor_vec)
-
-z
+factor_vec_num = as.numeric(factor_vec)
 ```
 
-By converting the logical, character, and factor variables to numeric vectors using the `as.numeric` function, this allows non-numeric vectors to be interpreted as numbers. 
+By converting the logical, character, and factor variables to numeric vectors using the `as.numeric` function, this allows non-numeric vectors to be interpreted as numbers. This is shown by the code chunk below. Note, the mean of `character_vec_num` shows as "NA" because the values "a", "b"...etc are not numerical. 
+
+```{r}
+mean(logical_num)
+
+mean(character_vec_num)
+
+mean(factor_vec_num)
+```
 
 
 

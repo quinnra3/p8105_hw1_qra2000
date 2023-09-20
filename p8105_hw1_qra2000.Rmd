@@ -6,7 +6,7 @@ date: "2023-09-18"
 
 ## Problem 1
 
-The code chunk below loads the necessary libraries: `moderndive` library, the `early_january_weather` dataset, and the `tidyverse` library. 
+The code chunk below loads the necessary libraries: `moderndive` library, the `early_january_weather` dataset, and the `tidyverse` library.
 
 ```{r}
 library(moderndive)
